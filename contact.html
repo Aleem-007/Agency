@@ -1,0 +1,303 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agency | Contact</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f4f0ec;
+      font-family: 'Inter', Arial, sans-serif;
+      color: #2d1e16;
+    }
+    /* Map Section */
+    .map-section {
+      position: relative;
+      width: 100%;
+      min-height: 420px;
+      background: #fbe5d6;
+      background-image: url('map-image.jpg'); /* Replace with your map image */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 60px 0 60px 0;
+    }
+    .contact-form-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(201,139,92,0.10), 0 2px 8px rgba(0,0,0,0.02);
+      padding: 32px 28px 28px 28px;
+      max-width: 370px;
+      width: 100%;
+      margin-left: 90px;
+      margin-top: 10px;
+      z-index: 2;
+    }
+    .contact-form-card h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+      color: #2d1e16;
+    }
+    .form-control, .form-select {
+      background: #f8ede7;
+      border: 1.5px solid #e7d8cb;
+      border-radius: 6px;
+      font-size: 1rem;
+      color: #2d1e16;
+      margin-bottom: 16px;
+      padding: 10px 14px;
+      box-shadow: none;
+      transition: border 0.2s;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: #f56a3a;
+      box-shadow: none;
+    }
+    .contact-form-card textarea.form-control {
+      min-height: 80px;
+      resize: vertical;
+    }
+    .submit-btn {
+      background: #f56a3a;
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 28px;
+      font-size: 1rem;
+      transition: background 0.2s;
+      letter-spacing: 0.5px;
+      margin-top: 6px;
+    }
+    .submit-btn:hover {
+      background: #c94e1c;
+      color: #fff;
+    }
+    /* Map Marker */
+    .map-marker {
+      position: absolute;
+      left: 54%;
+      top: 54%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-marker-icon {
+      width: 48px;
+      height: 48px;
+      background: #f56a3a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(201,139,92,0.12);
+    }
+    .map-marker-icon svg {
+      width: 28px;
+      height: 28px;
+      color: #fff;
+    }
+    /* Footer */
+    .footer-section {
+      background: #fbe5d6;
+      padding: 56px 0 0 0;
+      margin-top: 0;
+    }
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 0 24px;
+    }
+    .footer-brand {
+      font-weight: 700;
+      font-size: 1.18rem;
+      margin-bottom: 18px;
+      color: #2d1e16;
+    }
+    .footer-col {
+      min-width: 140px;
+      margin-bottom: 18px;
+    }
+    .footer-title {
+      color: #c98b5c;
+      font-weight: 700;
+      font-size: 0.98rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    .footer-link, .footer-link:visited {
+      color: #7c6b5e;
+      text-decoration: none;
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 7px;
+      transition: color 0.2s;
+    }
+    .footer-link:hover {
+      color: #f56a3a;
+      text-decoration: underline;
+    }
+    .footer-social {
+      display: flex;
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .footer-social-link {
+      background: #f56a3a;
+      color: #fff;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    .footer-social-link:hover {
+      background: #2d1e16;
+      color: #fff;
+    }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 22px 24px 18px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.98rem;
+      color: #b6a89a;
+      border-top: 1px solid #ecd3c0;
+      margin-top: 24px;
+    }
+    .footer-policy-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-policy-links a {
+      color: #b6a89a;
+      text-decoration: none;
+      transition: color 0.2s;
+      font-size: 0.97rem;
+    }
+    .footer-policy-links a:hover {
+      color: #f56a3a;
+      text-decoration: underline;
+    }
+    @media (max-width: 991.98px) {
+      .footer-content {
+        flex-direction: column;
+        gap: 0;
+      }
+      .footer-col {
+        margin-bottom: 18px;
+      }
+      .contact-form-card {
+        margin-left: 24px;
+      }
+    }
+    @media (max-width: 575.98px) {
+      .map-section {
+        padding: 32px 0 32px 0;
+      }
+      .contact-form-card {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 98vw;
+        padding: 20px 10px 16px 10px;
+      }
+      .footer-content, .footer-bottom {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Map & Contact Form Section -->
+  <section class="map-section">
+    <!-- Contact Form Card -->
+    <form class="contact-form-card shadow" autocomplete="off">
+      <h2>Get In Touch</h2>
+      <input type="email" class="form-control" placeholder="Your email" required>
+      <select class="form-select" required>
+        <option value="">Subject</option>
+        <option>General Inquiry</option>
+        <option>Support</option>
+        <option>Feedback</option>
+      </select>
+      <textarea class="form-control" placeholder="Message" required></textarea>
+      <button type="submit" class="submit-btn w-100 mt-2">SUBMIT NOW</button>
+    </form>
+    <!-- Map Marker -->
+    <!-- <div class="map-marker">
+      <div class="map-marker-icon">
+         Pin SVG Icon -->
+       <!-- <svg viewBox="0 0 32 32" fill="none"><path d="M16 29C16 29 26 20.5 26 13.5C26 8.25329 21.7467 4 16.5 4C11.2533 4 7 8.25329 7 13.5C7 20.5 16 29 16 29Z" fill="currentColor"/><circle cx="16.5" cy="13.5" r="3.5" fill="#fff"/></svg> -->
+      <!-- </div>
+    </div>  -->
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer-section">
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="footer-brand">Agency</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title">MENU</div>
+        <a href="index.html" class="footer-link">About</a>
+        <a href="service.html" class="footer-link">Services</a>
+        <a href="blog.html" class="footer-link">Blog</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title">SERVICE</div>
+        <a href="#" class="footer-link">Design</a>
+        <a href="#" class="footer-link">Development</a>
+        <a href="#" class="footer-link">Marketing</a>
+        <a href="#" class="footer-link">See More..</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-social">
+          <a href="#" class="footer-social-link" aria-label="Twitter">
+            <!-- Twitter SVG -->
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 18 18"><path d="M17.316 3.246a7.013 7.013 0 0 1-2.01.552 3.513 3.513 0 0 0 1.54-1.938 7.025 7.025 0 0 1-2.225.85A3.506 3.506 0 0 0 8.845 6.5a9.957 9.957 0 0 1-7.229-3.667a3.5 3.5 0 0 0 1.085 4.67A3.488 3.488 0 0 1 .7 6.364v.045a3.505 3.505 0 0 0 2.809 3.437a3.52 3.52 0 0 1-.921.123c-.224 0-.441-.022-.653-.062a3.508 3.508 0 0 0 3.273 2.435A7.028 7.028 0 0 1 .84 15.08a7.09 7.09 0 0 1-.84-.049A9.908 9.908 0 0 0 5.386 16.5c6.038 0 9.342-5.003 9.342-9.342c0-.143-.004-.285-.01-.426A6.676 6.676 0 0 0 18 3.35a7.01 7.01 0 0 1-1.984.544z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Facebook">
+            <!-- Facebook SVG -->
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 18 18"><path d="M16.5 0h-15A1.5 1.5 0 0 0 0 1.5v15A1.5 1.5 0 0 0 1.5 18h7.5v-6h-2v-2.5h2V7.5c0-2.07 1.26-3.2 3.09-3.2c.89 0 1.81.16 1.81.16v2h-1.02c-1 0-1.31.62-1.31 1.26v1.28h2.25l-.36 2.5h-1.89v6h3.71A1.5 1.5 0 0 0 18 16.5v-15A1.5 1.5 0 0 0 16.5 0z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <!-- Instagram SVG -->
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 18 18"><path d="M9 0C6.74 0 6.5.01 5.47.05c-1.03.04-1.73.18-2.34.39a4.61 4.61 0 0 0-1.67 1.09a4.61 4.61 0 0 0-1.09 1.67c-.21.61-.35 1.31-.39 2.34C.01 6.5 0 6.74 0 9c0 2.26.01 2.5.05 3.53c.04 1.03.18 1.73.39 2.34a4.61 4.61 0 0 0 1.09 1.67a4.61 4.61 0 0 0 1.67 1.09c.61.21 1.31.35 2.34.39C6.5 17.99 6.74 18 9 18c2.26 0 2.5-.01 3.53-.05c1.03-.04 1.73-.18 2.34-.39a4.61 4.61 0 0 0 1.67-1.09a4.61 4.61 0 0 0 1.09-1.67c.21-.61.35-1.31.39-2.34c.04-1.03.05-1.27.05-3.53c0-2.26-.01-2.5-.05-3.53c-.04-1.03-.18-1.73-.39-2.34a4.61 4.61 0 0 0-1.09-1.67a4.61 4.61 0 0 0-1.67-1.09c-.61-.21-1.31-.35-2.34-.39C11.5.01 11.26 0 9 0zm0 1.62c2.21 0 2.47.01 3.34.05c.8.04 1.23.17 1.52.29c.38.15.65.33.94.62c.29.29.47.56.62.94c.12.29.25.72.29 1.52c.04.87.05 1.13.05 3.34s-.01 2.47-.05 3.34c-.04.8-.17 1.23-.29 1.52a2.98 2.98 0 0 1-.62.94a2.98 2.98 0 0 1-.94.62c-.29.12-.72.25-1.52.29c-.87.04-1.13.05-3.34.05s-2.47-.01-3.34-.05c-.8-.04-1.23-.17-1.52-.29a2.98 2.98 0 0 1-.94-.62a2.98 2.98 0 0 1-.62-.94c-.12-.29-.25-.72-.29-1.52c-.04-.87-.05-1.13-.05-3.34s.01-2.47.05-3.34c.04-.8.17-1.23.29-1.52a2.98 2.98 0 0 1 .62-.94a2.98 2.98 0 0 1 .94-.62c.29-.12.72-.25 1.52-.29c.87-.04 1.13-.05 3.34-.05zm0 2.18a5.2 5.2 0 1 0 0 10.4a5.2 5.2 0 0 0 0-10.4zm0 8.58a3.38 3.38 0 1 1 0-6.76a3.38 3.38 0 0 1 0 6.76zm5.7-8.7a1.22 1.22 0 1 0 0 2.44a1.22 1.22 0 0 0 0-2.44z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>Copyright © 2022 Laxraj. All Rights Reserved.</div>
+      <div class="footer-policy-links">
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+  <!-- Bootstrap 5 JS (optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

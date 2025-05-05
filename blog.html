@@ -1,0 +1,466 @@
+<!-- blog.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agency Blog</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f5ede6;
+      font-family: 'Inter', Arial, sans-serif;
+      color: #2d1e16;
+    }
+    .blog-navbar {
+      background: #fff;
+      border-radius: 8px;
+      margin: 24px auto 0 auto;
+      max-width: 1100px;
+      padding: 0 32px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    }
+    .blog-navbar .navbar-brand {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #2d1e16 !important;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .blog-navbar .navbar-brand img {
+      width: 32px;
+      height: 32px;
+      margin-right: 8px;
+    }
+    .blog-navbar .navbar-nav {
+      gap: 32px;
+    }
+    .blog-navbar .nav-link {
+      color: #7c6b5e !important;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.1px;
+      transition: color 0.2s;
+      padding: 0;
+      margin: 0 4px;
+      position: relative;
+    }
+    .blog-navbar .nav-link:hover, .blog-navbar .nav-link.active {
+      color: #2d1e16 !important;
+    }
+    .blog-navbar .nav-link.active::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 3px;
+      background: #f4a259;
+      border-radius: 2px;
+      margin: 4px auto 0 auto;
+    }
+    .blog-navbar .btn-contact {
+      background: transparent;
+      border: 2px solid #2d1e16;
+      color: #2d1e16;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 8px 24px;
+      font-size: 1rem;
+      margin-left: 32px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .blog-navbar .btn-contact:hover {
+      background: #2d1e16;
+      color: #fff;
+      text-decoration: none;
+    }
+    /* About Section */
+    .about-section {
+      background: #f5ede6;
+      max-width: 1100px;
+      margin: 40px auto 0 auto;
+      padding: 0 32px;
+    }
+    .about-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 32px;
+    }
+    .about-image-col {
+      flex: 0 0 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    .about-avatar {
+      /* background: #ffdbcf; */
+      /* border-radius: 50%; */
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* overflow: hidden; */
+    }
+    .about-avatar img {
+        width: 220px;
+        height: 220px;
+      /* object-fit: cover; */
+      /* border-radius: 50%; */
+    }
+    .about-content-col {
+      flex: 1 1 320px;
+      min-width: 250px;
+    }
+    .about-label {
+      color: #b4845c;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .about-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      letter-spacing: -1px;
+    }
+    .about-desc {
+      color: #7c6b5e;
+      font-size: 1.08rem;
+      margin-bottom: 24px;
+      max-width: 480px;
+    }
+    .about-btn {
+      background: #fff;
+      border: 2px solid #2d1e16;
+      color: #2d1e16;
+      font-weight: 700;
+      border-radius: 8px;
+      padding: 10px 28px;
+      font-size: 1rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .about-btn:hover {
+      background: #2d1e16;
+      color: #fff;
+      text-decoration: none;
+    }
+    /* Stats */
+    .stats-section {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      max-width: 1100px;
+      margin: 40px auto 0 auto;
+      padding: 32px 32px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .stat-item {
+      flex: 1;
+      text-align: center;
+      border-right: 1px solid #f5ede6;
+    }
+    .stat-item:last-child {
+      border-right: none;
+    }
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #b4845c;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      color: #7c6b5e;
+      font-size: 1rem;
+    }
+    /* How We Work */
+    .work-section {
+      max-width: 1100px;
+      margin: 48px auto 0 auto;
+      padding: 0 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .work-content {
+      flex: 1 1 340px;
+      min-width: 260px;
+    }
+    .work-label {
+      color: #b4845c;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .work-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .work-desc {
+      color: #7c6b5e;
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+    }
+    .work-read {
+      color: #b4845c;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .work-list {
+      flex: 1 1 320px;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
+    .work-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2d1e16;
+    }
+    .work-list-item span {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #b4845c;
+      min-width: 32px;
+      display: inline-block;
+    }
+    /* Video Section */
+    .video-section {
+      max-width: 1100px;
+      margin: 48px auto 48px auto;
+      padding: 0 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      align-items: flex-start;
+    }
+    .video-box {
+      flex: 0 0 340px;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      background: #e5cfcf;
+      aspect-ratio: 16/9;
+      min-width: 280px;
+      max-width: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .video-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.8);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.11);
+    }
+    .video-play svg {
+      width: 32px;
+      height: 32px;
+      fill: #b4845c;
+    }
+    .video-duration {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.93rem;
+      padding: 2px 8px;
+    }
+    .video-content {
+      flex: 1 1 320px;
+      min-width: 240px;
+    }
+    .video-label {
+      color: #b4845c;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .video-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .video-desc {
+      color: #7c6b5e;
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+    }
+    /* Responsive */
+    @media (max-width: 991.98px) {
+      .about-row, .stats-section, .work-section, .video-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+      }
+      .stats-section {
+        padding: 24px 12px;
+      }
+    }
+    @media (max-width: 575.98px) {
+      .blog-navbar {
+        max-width: 100%;
+        border-radius: 0;
+        padding: 8px 4px;
+      }
+      .about-section, .stats-section, .work-section, .video-section {
+        padding: 0 8px;
+      }
+      .about-title, .work-title, .video-title {
+        font-size: 1.2rem;
+      }
+      .stat-value {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <!-- <nav class="blog-navbar justify-content-between">
+    <a class="navbar-brand" href="index.html">
+      <img src="logo.png" alt="Agency Logo">
+      Agency
+    </a>
+    <ul class="navbar-nav flex-row align-items-center mb-0">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="blog.html">Blog</a>
+      </li>
+    </ul>
+    <a href="index.html#contact" class="btn btn-contact">CONTACT</a>
+  </nav> -->
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="about-row">
+      <div class="about-image-col">
+        <div class="about-avatar">
+          <img src="about-avatar.png" alt="Team Member">
+        </div>
+      </div>
+      <div class="about-content-col">
+        <span class="about-label">ABOUT</span>
+        <h2 class="about-title">An Experience Design Agency</h2>
+        <p class="about-desc">
+          Provides a full service range<br>
+          Ability to put themselves in the merchant's shoes. It is meant to partner on the long run, and work as an extension of the merchant's team.
+        </p>
+        <a href="#" class="about-btn">ABOUT US</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stat-item">
+      <div class="stat-value">42%</div>
+      <div class="stat-label">Years of experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">73+</div>
+      <div class="stat-label">Agency members</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">5.000</div>
+      <div class="stat-label">Projects complete</div>
+    </div>
+  </section>
+
+  <!-- How We Work Section -->
+  <section class="work-section">
+    <div class="work-content">
+      <span class="work-label">HOW WE WORK</span>
+      <h3 class="work-title">Making Your Projects Look Awesome</h3>
+      <p class="work-desc">
+        Technical skills, design, business understanding, ability to put themselves in the merchant's shoes.
+      </p>
+      <span class="work-read">Read More</span>
+    </div>
+    <div class="work-list">
+      <div class="work-list-item">
+        <span>1</span>
+        Full service range including
+      </div>
+      <div class="work-list-item">
+        <span>2</span>
+        Technical skills, design, business
+      </div>
+      <div class="work-list-item">
+        <span>3</span>
+        Themselves in the merchant's
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section class="video-section">
+    <div class="video-box">
+      <img src="video-thumb.png" alt="Video Thumbnail">
+      <div class="video-play">
+        <svg viewBox="0 0 32 32"><polygon points="12,8 24,16 12,24" /></svg>
+      </div>
+      <span class="video-duration">1:45</span>
+    </div>
+    <div class="video-content">
+      <span class="video-label">VIDEO REEL</span>
+      <h4 class="video-title">Unlock The Greatest Value Possible</h4>
+      <p class="video-desc">
+        Design, business understanding, ability to put themselves in the merchant's shoes meant to partner.
+      </p>
+    </div>
+  </section>
+
+  <!-- Bootstrap 5 JS (optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
